@@ -1,29 +1,17 @@
-const fs = require('fs');
+const http = require('http');
 
-// Promisifying the readFile function
-const readFilePromise = () => new Promise((resolve, reject) => {
-  fs.readFile('./input.txt', 'utf-8', (err, data) => {
-    if (err) reject(err);
-    resolve(data);
+const HOST = 'localhost'; // 127.0.0.1
+const PORT = 8000;
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {
+    'content-type': 'application/json',
   });
+  res.end(JSON.stringify({
+    data: 'Hello from the server side',
+  }, null, 2));
 });
 
-// Promisifying the writeFile function
-const writeFilePromise = (data) => new Promise((resolve, reject) => {
-  fs.writeFile('output.txt', data, (err) => {
-    if (err) reject(err);
-    resolve('success');
-  });
+server.listen(PORT, HOST, () => {
+  console.log(`Listening on port ${8000}`);
 });
-
-readFilePromise()
-  .then((data) => {
-    console.log(data);
-    return data;
-  })
-  .then((data) => {
-    writeFilePromise(`Add stuff for output. But input was 👉🏾 ${data}`);
-  })
-  .catch((err) => {
-    console.error(`😭 ${err}`);
-  });
