@@ -1,0 +1,24 @@
+{
+  "name": "expressbootcamp",
+  "version": "1.0.0",
+  "description": "Building a RESTful API with Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ychinamale/expressBootcamp.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "api"
+  ],
+  "author": "Yamikani Chinamale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ychinamale/expressBootcamp/issues"
+  },
+  "homepage": "https://github.com/ychinamale/expressBootcamp#readme"
+}
