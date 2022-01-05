@@ -6,7 +6,7 @@ const HOST = 'localhost'; // 127.0.0.1
 const PORT = 8000;
 
 // Function to promisify a file read
-const readFileProm = (filePath) => new Promise((resolve, reject) => {
+const readFileProm = (filePath) => new Promise<string>((resolve, reject) => {
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) { reject(err); }
     else { resolve(data); }
