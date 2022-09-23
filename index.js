@@ -1,6 +1,18 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
+const Handlebars = require('handlebars');
+
+const data = require('./data.json');
+
+const templateProductList = fs.readFileSync('./templates/productList.html', 'utf-8');
+const templateProductDetails = fs.readFileSync('./templates/productDetails.html', 'utf-8');
+
+// function to create HTML pages from templates
+const createHTML = (barsHTML, json) => {
+  const template = Handlebars.compile(barsHTML);
+  return template(json);
+}
 
 const HOST = 'localhost'; // 127.0.0.1
 const PORT = 8000;
@@ -24,11 +36,13 @@ readFileProm(`${__dirname}/data.json`)
   })
 
 app.get(['/', '/overview'], (_, res) => {
-  res.end('This is the overview')
+  res.set({ 'content-type': 'text/html' });
+  res.send(createHTML(templateProductList, data));
 })
 
-app.get('/product', (_, res) => {
-  res.end('This is now the product page')
+app.get('/product/:id', (req, res) => {
+  res.set({ 'content-type': 'text/html' });
+  res.send(createHTML(templateProductDetails, data.products[req.params.id]));
 })
 
 app.get('/api', (_, res) => {
