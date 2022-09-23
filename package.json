@@ -23,7 +23,8 @@
   "homepage": "https://github.com/ychinamale/expressBootcamp#readme",
   "dependencies": {
     "@types/node": "^17.0.8",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "handlebars": "^4.7.7"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.7.0",
